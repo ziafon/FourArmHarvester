@@ -45,7 +45,7 @@ source ~/.bashrc
 ### 安装其他工具包
 一些ROS关联的工具包并不在上述安装的软件集中，需要单独安装。
 ```
-sudo apt install ros-noetic-opencv-python3
+sudo apt install python3-opencv
 sudo apt install ros-noetic-librealsense2
 sudo apt install ros-noetic-realsense2-camera
 sudo apt install ros-noetic-realsense2-description
@@ -82,11 +82,11 @@ python3 main.py
 ```
 这时项目的所有功能都已经启动，同时会生成一个简易的UI界面，通过界面可以尝试机器人的相关功能，比如变更机械臂位置，规划采摘目标以及执行采摘等。
 ## 其他说明
-此项目目前为测试版本，一些功能后续会逐步完善。
+此项目目前为测试版本，且一些功能代码目前还在作大的改动，目前没有提交，后续会逐步完善。
 ## 版本更新日志
 * v0.1 (2023.6.14)\
 项目创建，带有基础功能。
-* v0.2 (2023.7.9)\
+* v0.2 (2023.7.09)\
 实现感知、规划、控制以及驱动等功能。
 * v0.2 (2023.7.20)\
 优化驱动节点，删除无效的状态信息反馈。
@@ -101,4 +101,6 @@ python3 main.py
 * v0.6 (2023.9.18)\
 修复软件bug
 * v0.7 (2023.9.24)
+功能进一步集成
+* v0.71 (2023.10.05)
 功能进一步集成

@@ -5,10 +5,6 @@
 '''
 异常处理：在程序中已经有一些异常处理，例如devices_init方法中的try-except语句。但是，还可以在其他关键部分添加更多的异常处理，例如网络连接、数据读取等，以提高程序的健壮性。
 代码注释：还不够完善；使用Python的docstring来描述函数的作用、输入参数和返回值等。
-类型提示：为函数和方法的参数和返回值添加类型提示，
-变量命名：部分变量命名可能不够直观，例如msgs、wkc等
-多线程库比较旧：虽然程序中使用了_thread库来实现多线程，但是这是一个较旧的库。可以考虑使用更现代的threading或者concurrent.futures库来替代_thread库。
-将硬编码的数字替换为常量或配置文件：在代码中有一些硬编码的数字，类似于Gripper(2)这样，可读性太差，将这些数字替换为常量或者将它们放入配置文件中，可以提高代码的可维护性。
 函数解耦：进一步将代码的功能划分成更小的函数或方法，以提高代码的可读性和可维护性。
 '''
 
@@ -35,13 +31,9 @@ class Drive():
 
 
     """
-    processing the operations from robot_motion and console node
-    'set mode for each servo motor
-    'set controlword for each servo motor
-    'set target velocity for each servo motor
-    'gripper operation
-    'switch on 
-    'switch off
+    处理来自schedule节点和UI节点的操作
+    '为每个伺服电机设置模式、控制字和目标速度
+    '执行夹持器操作
     """
     def callback(self, msgs):
         if msgs.target_velocity:
@@ -56,18 +48,17 @@ class Drive():
         
 
     """
-    publish the feedback of the robot 
-    'the position of each servo motor
-    'the status of each servo motor
-    'other ...
+    发布机器人的反馈信息
+    '每个伺服电机的位置
+    '每个伺服电机的状态
+    '其他...
     """
     def feedback_publish(self):
         fb = hardware()
-        pos = False
-        status = ['0000000000000000' for i in range(motorNum)]
-        limit = ['0000000000000000' for i in range(motorNum)]
-        error = ['0000000000000000' for i in range(motorNum)]
-        position = [0 for i in range(motorNum)]
+        status = ['0000000000000000' for _ in range(motorNum)]
+        limit = ['0000000000000000' for _ in range(motorNum)]
+        error = ['0000000000000000' for _ in range(motorNum)]
+        position = [0 for _ in range(motorNum)]
         while not rospy.is_shutdown():
             rospy.sleep(0.1)
             for i in range(motorNum):
@@ -78,28 +69,25 @@ class Drive():
             fb.motor_status = status
             fb.io_status = limit
             fb.error_status = error
-            pos = True if pos == False else False
             self.pub.publish(fb)
 
 
     def devices_init(self):
-        # add nodes
+        # 添加节点
         for i in range(motorNum):
             self.network.add_node(self.servomotors[i].node)
-        # connect from CAN bus
+        # 连接CAN总线
         self.network.connect(bustype="canalystii", channel=0, bitrate=500000)
         # 若连接失败，捕获异常，并返回。
         try:
-            # pdo mapping
             for i in range(motorNum):
                 self.servomotors[i].pdo_mapping()
         except Exception as e:
-            self.error = 1
-            print('\033[1;31m{} 总线连接失败！！！\033[0m\n'.format('xie'))
+            print('\033[1;31m 总线连接失败！！！\033[0m\n')
             return
-        # start CAN bus
+        # 启动CAN总线
         self.network.sync.start(0.1)
-        # change the work state of nodes
+        # 使能节点状态
         for i in range(motorNum):
             self.servomotors[i].node.nmt.state = 'OPERATIONAL'
         rospy.sleep(1)
@@ -113,14 +101,12 @@ class Drive():
     def rpdo_close(self):
         for i in range(motorNum):
             self.servomotors[i].rpdo_stop()
-        # self.grippers.rpdo_stop()
 
     def devices_down(self):
-        # Disconnect from CAN bus
+        # 断开CAN总线
         self.rpdo_close()
         self.network.sync.stop()
         self.network.disconnect()
-
 
 
 if __name__=='__main__': 
