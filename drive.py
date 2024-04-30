@@ -45,6 +45,8 @@ class Drive():
         if msgs.motor_control:
             for i in range(motorNum):
                 self.servomotors[i].setCommand(msgs.motor_control[i])
+        if msgs.gripper_action:
+            gripper[i] = grasp
         
 
     """

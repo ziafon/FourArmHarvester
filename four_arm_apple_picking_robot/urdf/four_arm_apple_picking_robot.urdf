@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="four_arm_apple_picking_robot">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="1.20048560332776 0.00996467389539268 1.0039725602524"
+        rpy="0 0 0" />
+      <mass
+        value="55.8887915039932" />
+      <inertia
+        ixx="9.76736768565433"
+        ixy="-0.00147593294491498"
+        ixz="2.74590231314596E-05"
+        iyy="10.1194370743713"
+        iyz="0.0200117573042444"
+        izz="0.429739697536982" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="vertical_motion_lower_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.92183675840469 -0.189414832039036 -0.277478922900619"
+        rpy="0 0 0" />
+      <mass
+        value="39.8875186866351" />
+      <inertia
+        ixx="0.0720815435739755"
+        ixy="-0.000301866562440358"
+        ixz="0.000554773258514539"
+        iyy="8.93501305158888"
+        iyz="-0.000459469518445038"
+        izz="8.92202746477089" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/vertical_motion_lower_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/vertical_motion_lower_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="vertical_motion_lower_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="0.020573 -0.045667 0.85337"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="vertical_motion_lower_arm_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.675"
+      effort="500"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="horizontal_motion_lower_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="-0.0937530748704592 0.157083196004726 -0.164416376353018"
+        rpy="0 0 0" />
+      <mass
+        value="5.00091180377085" />
+      <inertia
+        ixx="0.104058912630245"
+        ixy="-2.92163183294817E-06"
+        ixz="-5.26536440265388E-06"
+        iyy="0.0312141684583302"
+        iyz="0.0429110209884728"
+        izz="0.0802747931681423" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_lower_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_lower_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="horizontal_motion_lower_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="0.211 -0.16157 -0.23973"
+      rpy="0 0 0" />
+    <parent
+      link="vertical_motion_lower_arm_Link" />
+    <child
+      link="horizontal_motion_lower_left_arm_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.33"
+      upper="0"
+      effort="200"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch1_motion_lower_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="-9.40034346438579E-05 0.257021645272143 -0.0580686973508295"
+        rpy="0 0 0" />
+      <mass
+        value="1.71119094381812" />
+      <inertia
+        ixx="0.0216036570541051"
+        ixy="2.01005930343236E-06"
+        ixz="-1.89008255285572E-06"
+        iyy="0.00223420145137601"
+        iyz="-1.82710489698482E-05"
+        izz="0.0218797697318048" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_lower_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_lower_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch1_motion_lower_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.085 0.066385 -0.17535"
+      rpy="0.5236 0 3.1416" />
+    <parent
+      link="horizontal_motion_lower_left_arm_Link" />
+    <child
+      link="stretch1_motion_lower_left_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.52"
+      upper="0"
+      effort="100"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch2_motion_lower_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.00234960967982101 -0.0508191652743764 -0.00244228110053801"
+        rpy="0 0 0" />
+      <mass
+        value="1.04540560930553" />
+      <inertia
+        ixx="0.0265218429167203"
+        ixy="2.31560284291579E-08"
+        ixz="-1.5120792286752E-07"
+        iyy="0.000850183324861688"
+        iyz="-5.14469738142876E-08"
+        izz="0.0265226368792159" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_lower_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_lower_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch2_motion_lower_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.002306 0.73268 -0.065269"
+      rpy="0 0 0" />
+    <parent
+      link="stretch1_motion_lower_left_arm_Link" />
+    <child
+      link="stretch2_motion_lower_left_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.4"
+      upper="0"
+      effort="50"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="horizontal_motion_lower_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.0938885999822825 0.0715454470608992 -0.164016694787964"
+        rpy="0 0 0" />
+      <mass
+        value="4.99311275799924" />
+      <inertia
+        ixx="0.104058053478412"
+        ixy="2.89593266032469E-06"
+        ixz="4.81042968592379E-06"
+        iyy="0.0312138746046444"
+        iyz="0.0429115428565867"
+        izz="0.0802727465252147" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_lower_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_lower_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="horizontal_motion_lower_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="1.641 -0.076571 -0.23973"
+      rpy="0 0 0" />
+    <parent
+      link="vertical_motion_lower_arm_Link" />
+    <child
+      link="horizontal_motion_lower_right_arm_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="1.33"
+      effort="200"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch1_motion_lower_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="-9.4003434643497E-05 0.257021645272143 -0.0580686973508286"
+        rpy="0 0 0" />
+      <mass
+        value="1.71119094381812" />
+      <inertia
+        ixx="0.0216036570541051"
+        ixy="2.01005930343546E-06"
+        ixz="-1.89008255285756E-06"
+        iyy="0.00223420145137602"
+        iyz="-1.82710489698496E-05"
+        izz="0.0218797697318048" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_lower_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_lower_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch1_motion_lower_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="0.085 -0.018615 -0.17535"
+      rpy="0.5236 0 3.1416" />
+    <parent
+      link="horizontal_motion_lower_right_arm_Link" />
+    <child
+      link="stretch1_motion_lower_right_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.52"
+      upper="0"
+      effort="100"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch2_motion_lower_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.00234960967982301 -0.0508191652743684 -0.00244228110054046"
+        rpy="0 0 0" />
+      <mass
+        value="1.04540560930546" />
+      <inertia
+        ixx="0.0265218429167191"
+        ixy="2.31560286350632E-08"
+        ixz="-1.51207922859386E-07"
+        iyy="0.000850183324861653"
+        iyz="-5.14469738829989E-08"
+        izz="0.0265226368792147" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_lower_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_lower_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch2_motion_lower_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.002306 0.73268 -0.065269"
+      rpy="0 0 0" />
+    <parent
+      link="stretch1_motion_lower_right_arm_Link" />
+    <child
+      link="stretch2_motion_lower_right_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.4"
+      upper="0"
+      effort="50"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="vertical_motion_upper_arm_Link">
+    <inertial>
+      <origin
+        xyz="1.00577540818045 -0.19002576869878 -0.278064745731748"
+        rpy="0 0 0" />
+      <mass
+        value="39.8490558547081" />
+      <inertia
+        ixx="0.0703732734817126"
+        ixy="0.000184836998741654"
+        ixz="0.000554411225366761"
+        iyy="8.93460871300024"
+        iyz="-0.000459586025494624"
+        izz="8.91994937924726" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/vertical_motion_upper_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/vertical_motion_upper_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="vertical_motion_upper_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.064427 -0.045667 1.9024"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="vertical_motion_upper_arm_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.675"
+      effort="500"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="horizontal_motion_upper_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="-0.0937530748704595 0.157083196004725 -0.164416376353017"
+        rpy="0 0 0" />
+      <mass
+        value="5.00091180377084" />
+      <inertia
+        ixx="0.104058912630244"
+        ixy="-2.92163183283876E-06"
+        ixz="-5.26536440272013E-06"
+        iyy="0.0312141684583301"
+        iyz="0.0429110209884727"
+        izz="0.080274793168142" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_upper_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_upper_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="horizontal_motion_upper_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="0.296 -0.16157 -0.23973"
+      rpy="0 0 0" />
+    <parent
+      link="vertical_motion_upper_arm_Link" />
+    <child
+      link="horizontal_motion_upper_left_arm_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="1.33"
+      effort="200"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch1_motion_upper_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="-9.40101275108962E-05 0.257021755253652 -0.0580686938817807"
+        rpy="0 0 0" />
+      <mass
+        value="1.71119036478191" />
+      <inertia
+        ixx="0.021603657035151"
+        ixy="2.01005930343481E-06"
+        ixz="-1.89008255247706E-06"
+        iyy="0.00223420141576257"
+        iyz="-1.82710489698322E-05"
+        izz="0.0218797697128511" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_upper_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_upper_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch1_motion_upper_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.085 0.066385 -0.17535"
+      rpy="0.5236 0 3.1416" />
+    <parent
+      link="horizontal_motion_upper_left_arm_Link" />
+    <child
+      link="stretch1_motion_upper_left_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.52"
+      upper="0"
+      effort="100"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch2_motion_upper_left_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.00234960967982117 -0.0508191652744018 -0.00244228110053757"
+        rpy="0 0 0" />
+      <mass
+        value="1.04540560930552" />
+      <inertia
+        ixx="0.0265218429167204"
+        ixy="2.31560284310027E-08"
+        ixz="-1.51207922856131E-07"
+        iyy="0.000850183324861702"
+        iyz="-5.14469738348603E-08"
+        izz="0.026522636879216" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_upper_left_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_upper_left_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch2_motion_upper_left_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.002306 0.73268 -0.065269"
+      rpy="0 0 0" />
+    <parent
+      link="stretch1_motion_upper_left_arm_Link" />
+    <child
+      link="stretch2_motion_upper_left_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.4"
+      upper="0"
+      effort="50"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="horizontal_motion_upper_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.0938885999822823 0.0715454470605174 -0.164016694788185"
+        rpy="0 0 0" />
+      <mass
+        value="4.99311275799924" />
+      <inertia
+        ixx="0.104058053478412"
+        ixy="2.89593266043014E-06"
+        ixz="4.81042968587017E-06"
+        iyy="0.0312138746046444"
+        iyz="0.0429115428565867"
+        izz="0.0802727465252146" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_upper_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/horizontal_motion_upper_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="horizontal_motion_upper_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="1.726 -0.076571 -0.23973"
+      rpy="0 0 0" />
+    <parent
+      link="vertical_motion_upper_arm_Link" />
+    <child
+      link="horizontal_motion_upper_right_arm_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.39"
+      upper="0"
+      effort="200"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch1_motion_upper_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="-9.40034346439411E-05 0.25702164527214 -0.0580686973508291"
+        rpy="0 0 0" />
+      <mass
+        value="1.71119094381813" />
+      <inertia
+        ixx="0.0216036570541058"
+        ixy="2.01005930343175E-06"
+        ixz="-1.89008255285722E-06"
+        iyy="0.00223420145137603"
+        iyz="-1.82710489698343E-05"
+        izz="0.0218797697318054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_upper_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch1_motion_upper_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch1_motion_upper_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="0.085 -0.018615 -0.17535"
+      rpy="0.5236 0 3.1416" />
+    <parent
+      link="horizontal_motion_upper_right_arm_Link" />
+    <child
+      link="stretch1_motion_upper_right_arm_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.52"
+      upper="0"
+      effort="100"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="stretch2_motion_upper_right_arm_Link">
+    <inertial>
+      <origin
+        xyz="0.00234960967982101 -0.0508191652743968 -0.00244228110053979"
+        rpy="0 0 0" />
+      <mass
+        value="1.04540560930551" />
+      <inertia
+        ixx="0.0265218429167202"
+        ixy="2.31560285021933E-08"
+        ixz="-1.5120792283119E-07"
+        iyy="0.000850183324861697"
+        iyz="-5.14469738912117E-08"
+        izz="0.0265226368792158" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_upper_right_arm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://four_arm_apple_picking_robot/meshes/stretch2_motion_upper_right_arm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="stretch2_motion_upper_right_arm_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.002306 0.73268 -0.065269"
+      rpy="0 0 0" />
+    <parent
+      link="stretch1_motion_upper_right_arm_Link" />
+    <child
+      link="stretch2_motion_upper_right_arm_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.4"
+      upper="0"
+      effort="50"
+      velocity="0.5" />
+  </joint>
+</robot>

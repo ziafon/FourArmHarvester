@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="robot_block" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="block" params='parent name x z use_nominal_extrinsics:=false'>
+  <link name="${name}_link">
+        <visual>
+            <geometry>
+                <box size="0.01 0.01 0.01" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="dark">
+                <color rgba="0.1 0.1 0.1 0.5" />
+            </material>
+        </visual>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+        <parent link="${parent}"/>
+        <child link="${name}_link" />
+        <origin xyz="${x} -0.375 ${z}" rpy="0 0 -3.142" />
+    </joint>
+
+</xacro:macro >
+</robot>

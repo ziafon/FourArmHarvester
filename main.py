@@ -78,6 +78,8 @@ class Harvester():
             if flag == True:
                 self.plan.targetPublish(agent)
 
+        agent =  msgs.agent
+
 
 if __name__ == '__main__':
     try:

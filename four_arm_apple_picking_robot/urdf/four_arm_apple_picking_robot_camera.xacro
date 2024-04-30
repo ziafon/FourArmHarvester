@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot  name="applerobot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:include filename="$(find four_arm_apple_picking_robot)/urdf/four_arm_apple_picking_robot.urdf.xacro"/>
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
+  <xacro:include filename="$(find four_arm_apple_picking_robot)/urdf/block.xacro"/>
+  <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d455.urdf.xacro" /> -->
+<xacro:manipulators/>
+<!-- build camera_DL -->
+  <xacro:sensor_d435i parent="horizontal_motion_lower_left_arm_Link" name="camera_DL" use_nominal_extrinsics="false" >
+    <origin rpy="0 ${-pi/6} ${-pi/2}" xyz="-0.21 -0.15 -0.03"/>
+  </xacro:sensor_d435i>
+
+<!-- build camera_DR -->
+  <xacro:sensor_d435i parent="horizontal_motion_lower_right_arm_Link" name="camera_DR" use_nominal_extrinsics="false" >
+    <origin rpy="0 ${-pi/6} ${-pi/2}" xyz="0.29 -0.23 -0.03"/>
+  </xacro:sensor_d435i>
+
+<!-- build camera_UL -->
+  <xacro:sensor_d435i parent="horizontal_motion_upper_left_arm_Link" name="camera_UL" use_nominal_extrinsics="false" >
+    <origin rpy="0 ${-pi/6} ${-pi/2}" xyz="-0.21 -0.15 -0.03"/>
+  </xacro:sensor_d435i>
+
+<!-- build camera_UR -->
+  <xacro:sensor_d435i parent="horizontal_motion_upper_right_arm_Link" name="camera_UR" use_nominal_extrinsics="false" >
+    <origin rpy="0 ${-pi/6} ${-pi/2}" xyz="0.29 -0.23 -0.03"/>
+  </xacro:sensor_d435i>
+
+  <xacro:block parent="base_link" name="fake_DL" x="0.184" z="0.484" use_nominal_extrinsics="false" >
+    <!-- <origin rpy="${pi/6} 0 ${-pi}" xyz="0.184 -0.375 0.417"/> -->
+  </xacro:block>
+
+  <xacro:block parent="base_link" name="fake_DR" x="1.697" z="0.499" use_nominal_extrinsics="false" >
+    <!-- <origin rpy="${pi/6} 0 ${-pi}" xyz="1.704 -0.375 0.417"/> -->
+  </xacro:block>
+
+  <xacro:block parent="base_link" name="fake_UL" x="0.184" z="1.543" use_nominal_extrinsics="false" >
+    <!-- <origin rpy="${pi/6} 0 ${-pi}" xyz="0.184 -0.375 1.477"/> -->
+  </xacro:block>
+
+  <xacro:block parent="base_link" name="fake_UR" x="1.737" z="1.568" use_nominal_extrinsics="false" >
+    <!-- <origin rpy="${pi/6} 0 ${-pi}" xyz="1.704 -0.375 1.477"/> -->
+  </xacro:block>
+
+</robot>
